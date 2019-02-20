@@ -14,9 +14,10 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:inputType="text"
         android:hint="@string/stadt_hint"
         android:imeOptions="actionGo"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -63,6 +64,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/image"
         app:layout_constraintStart_toEndOf="@+id/image"
         app:layout_constraintTop_toBottomOf="@+id/temperatur" />
 

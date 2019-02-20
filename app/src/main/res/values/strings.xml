@@ -4,4 +4,6 @@
     <string name="button">Anzeige</string>
     <string name="content_description">Wetter als Bild</string>
     <string name="temp_template">%1d \u2103</string>
+    <!-- Konstanten -->
+    <string name="weather_key">40c5de3e98b083a9edc44d6a653de166</string>
 </resources>
