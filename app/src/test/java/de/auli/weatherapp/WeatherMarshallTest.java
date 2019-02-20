@@ -1,11 +1,15 @@
 package de.auli.weatherapp;
 
 import org.eclipse.persistence.jaxb.MarshallerProperties;
+import org.eclipse.persistence.jaxb.UnmarshallerProperties;
 import org.junit.Test;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
+import org.eclipse.persistence.oxm.MediaType;
 
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -21,5 +25,8 @@ public class WeatherMarshallTest {
         Student s = new Student("Walter", "White");
         JAXBContext jc = JAXBContext.newInstance(Student.class);
         Marshaller m = jc.createMarshaller();
+
+        m.setProperty("media-type", "application/json");
+        //u.setProperty(UnmarshallerProperties.MEDIA_TYPE, MediaType.APPLICATION_JSON);
     }
 }
