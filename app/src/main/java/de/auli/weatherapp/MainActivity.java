@@ -48,8 +48,7 @@ public class MainActivity extends AppCompatActivity {
                     image.setImageBitmap(bitmapWeather);
                     beschreibung.setText(weather.getDescription());
                     Double temp = weather.getTemp() - 273.15;
-                    temperatur.setText(getString(R.string.temp_template,
-                            temp.intValue()));
+                    temperatur.setText(getString(R.string.temp_template, temp.intValue()));
                 });
             } catch (Exception e) {
                 Log.e(TAG, "getWeather()", e);
@@ -65,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean istNetzwerkVerfuegbar() {
         ConnectivityManager mgr = null;
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             mgr = getSystemService(ConnectivityManager.class);
         } else {
             mgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
