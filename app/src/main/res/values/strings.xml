@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Weather App</string>
+    <string name="stadt_hint">Name einer Stadt</string>
+    <string name="button">Anzeige</string>
+    <string name="content_description">Wetter als Bild</string>
+    <string name="temp_template">%1d \u2103</string>
+</resources>
