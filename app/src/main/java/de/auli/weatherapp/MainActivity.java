@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
                     city.setText("Eine Stadt eingeben!!!");
                 }
                 final Result result = WeatherServerReq.getWeather(city.getText().toString().toString());
-                //final WeatherViewDataMapper mapper = new WeatherViewDataMapper(result);
 
                 runOnUiThread(() -> {
                     mapp(result);
