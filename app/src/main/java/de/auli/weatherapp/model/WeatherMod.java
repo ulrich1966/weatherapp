@@ -1,6 +1,9 @@
 package de.auli.weatherapp.model;
 
-public class WeatherMod {
+import java.util.Arrays;
+import java.util.Map;
+
+public class WeatherMod extends Model {
     public static final String NAME = "weather";
 
     private String id;

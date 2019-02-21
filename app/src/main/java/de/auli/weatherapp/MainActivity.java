@@ -13,12 +13,19 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import de.auli.weatherapp.model.Result;
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private EditText city;
     private ImageView image;
     private TextView temperatur, beschreibung;
 
+    /**
+     * Startpunkt
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,15 +47,18 @@ public class MainActivity extends AppCompatActivity {
         final Button button = findViewById(R.id.button);
         button.setOnClickListener((v) -> new Thread(() -> {
             try {
-                final WeatherData weather = WeatherUtils.getWeather(city.getText().toString());
-                final Bitmap bitmapWeather = WeatherUtils.getImage(weather);
+                final Result result = new WeatherServerReq().getWeather(city.toString());
+                final WeatherViewDataMapper mapper = new WeatherViewDataMapper(result);
+
                 runOnUiThread(() -> {
-                    city.setText(weather.getName());
-                    image.setImageBitmap(bitmapWeather);
-                    beschreibung.setText(weather.getDescription());
-                    Double temp = weather.getTemp() - 273.15;
-                    temperatur.setText(getString(R.string.temp_template, temp.intValue()));
+                    mapper.mapp();
+//                    city.setText(weather.getName());
+//                    image.setImageBitmap(bitmapWeather);
+//                    beschreibung.setText(weather.getDescription());
+//                    Double temp = weather.getTemp() - 273.15;
+//                    temperatur.setText(getString(R.string.temp_template, temp.intValue()));
                 });
+
             } catch (Exception e) {
                 Log.e(TAG, "getWeather()", e);
             }

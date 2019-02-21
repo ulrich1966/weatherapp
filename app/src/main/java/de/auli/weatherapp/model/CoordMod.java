@@ -1,6 +1,6 @@
 package de.auli.weatherapp.model;
 
-public class CoordMod {
+public class CoordMod extends Model {
     public static final String NAME = "coord";
 
     private String lon;
