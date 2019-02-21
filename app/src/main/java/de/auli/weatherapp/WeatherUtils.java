@@ -16,7 +16,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.MessageFormat;
 
-class WeatherUtils {
+public class WeatherUtils {
     private static final String TAG = WeatherUtils.class.getSimpleName();
     private static final String URL = "http://api.openweathermap.org/data/2.5/weather?q=%1$s&lang=de&appid=%2$s";
     //private static final String KEY = String.format("%s", R.string.weather_key); --> Results in different Number!!!
