@@ -33,9 +33,13 @@ class WeatherServerReq {
         return getWeather(city, true);
     }
 
+    public static String getJsonWeather(String city) throws JSONException, IOException {
+        return makeServerRequest(String.format(URL, city, KEY));
+    }
+
     private static Result crateResult(String city) throws JSONException, IOException {
         String jsonData = makeServerRequest(String.format(URL, city, KEY));
-        UnmarshallService us = new UnmarshallService();
+        MapperService us = new MapperService();
         Result result = null;
         try {
             result = us.unmarshall(jsonData);

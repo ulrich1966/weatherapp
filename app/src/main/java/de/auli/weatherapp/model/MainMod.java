@@ -10,7 +10,7 @@ public class MainMod extends Model {
     private String temp_max;
 
     public String getTemp() {
-        return temp;
+        return this.convert(temp);
     }
 
     public void setTemp(String temp) {
@@ -34,7 +34,7 @@ public class MainMod extends Model {
     }
 
     public String getTemp_min() {
-        return temp_min;
+        return this.convert(temp_min);
     }
 
     public void setTemp_min(String temp_min) {
@@ -42,11 +42,16 @@ public class MainMod extends Model {
     }
 
     public String getTemp_max() {
-        return temp_max;
+        return this.convert(temp_max);
     }
 
     public void setTemp_max(String temp_max) {
         this.temp_max = temp_max;
+    }
+
+    private String convert(String value){
+        Double temp = new Double(value) - 273.15;
+        return ((Integer) temp.intValue()).toString();
     }
 
     @Override

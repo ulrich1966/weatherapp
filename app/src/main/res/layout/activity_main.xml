@@ -10,9 +10,7 @@
         android:id="@+id/city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_margin="@dimen/margin"
         android:ems="10"
         android:hint="@string/stadt_hint"
         android:imeOptions="actionGo"
@@ -25,9 +23,7 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_margin="@dimen/margin"
         android:text="@string/button"
         app:layout_constraintStart_toEndOf="@+id/city"
         app:layout_constraintTop_toTopOf="parent" />
@@ -36,9 +32,7 @@
         android:id="@+id/image"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_margin="@dimen/margin"
         android:contentDescription="@string/content_description"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/city"
@@ -48,24 +42,46 @@
         android:id="@+id/temperatur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_margin="@dimen/margin"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        tools:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/image"
-        app:layout_constraintTop_toBottomOf="@+id/city" />
+        app:layout_constraintTop_toBottomOf="@+id/city"
+        tools:text="TextView" />
 
     <TextView
         android:id="@+id/beschreibung"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_margin="@dimen/margin"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/image"
         app:layout_constraintStart_toEndOf="@+id/image"
         app:layout_constraintTop_toBottomOf="@+id/temperatur" />
+
+    <ListView
+        android:id="@+id/list_data"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image" />
+
+
+    <!--
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/fragment"
+        android:name="de.auli.weatherapp.FgmData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image"
+        tools:layout="@layout/fgm_datas"
+        />
+    -->
 
 </android.support.constraint.ConstraintLayout>

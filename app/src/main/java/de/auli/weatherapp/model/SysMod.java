@@ -1,5 +1,10 @@
 package de.auli.weatherapp.model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.Date;
+
 public class SysMod extends Model {
     public static final String NAME = "sys";
     private String type;
@@ -42,7 +47,7 @@ public class SysMod extends Model {
     }
 
     public String getSunrise() {
-        return sunrise;
+        return convert(sunrise);
     }
 
     public void setSunrise(String sunrise) {
@@ -50,11 +55,18 @@ public class SysMod extends Model {
     }
 
     public String getSunset() {
-        return sunset;
+        return convert(sunset);
     }
 
     public void setSunset(String sunset) {
         this.sunset = sunset;
+    }
+
+    private String convert(String sunrise) {
+        Date date = new Date(Integer.valueOf(sunrise));
+        SimpleDateFormat localDateFormat = new SimpleDateFormat("HH:mm");
+        String time = localDateFormat.format(new Date());
+        return time;
     }
 
     @Override

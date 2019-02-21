@@ -3,7 +3,9 @@
     <string name="stadt_hint">Name einer Stadt</string>
     <string name="button">Anzeige</string>
     <string name="content_description">Wetter als Bild</string>
-    <string name="temp_template">%1d \u2103</string>
+    <string name="temp_template">%1s \u2103</string>
+    <string name="deg_template">%1s \u00b0</string>
+    <string name="txt_dummy">hier Text</string>
     <!-- Konstanten -->
     <string name="weather_key" formatted="false" translatable="false">40c5de3e98b083a9edc44d6a653de166</string>
 </resources>
