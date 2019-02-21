@@ -1,5 +1,7 @@
 package de.auli.weatherapp;
 
+import android.support.v7.app.AppCompatActivity;
+
 import de.auli.weatherapp.model.Result;
 
 class WeatherViewDataMapper {
@@ -11,6 +13,5 @@ class WeatherViewDataMapper {
     }
 
     public void mapp(){
-
     }
 }

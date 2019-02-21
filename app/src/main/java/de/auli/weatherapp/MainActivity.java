@@ -38,20 +38,23 @@ public class MainActivity extends AppCompatActivity {
         //Layout bauen
         setContentView(R.layout.activity_main);
         city = findViewById(R.id.city);
-        image = findViewById(R.id.image);
-        temperatur = findViewById(R.id.temperatur);
-        beschreibung = findViewById(R.id.beschreibung);
+//        image = findViewById(R.id.image);
+//        temperatur = findViewById(R.id.temperatur);
+//        beschreibung = findViewById(R.id.beschreibung);
 
         // Action fuer den Button / Thread erstellen / runOnUiThread() ueberschreiben und Thread und
         // starten
         final Button button = findViewById(R.id.button);
         button.setOnClickListener((v) -> new Thread(() -> {
             try {
-                final Result result = new WeatherServerReq().getWeather(city.toString());
-                final WeatherViewDataMapper mapper = new WeatherViewDataMapper(result);
+                if(city == null || city.getText().toString().isEmpty()){
+                    city.setText("Eine Stadt eingeben!!!");
+                }
+                final Result result = WeatherServerReq.getWeather(city.getText().toString().toString());
+                //final WeatherViewDataMapper mapper = new WeatherViewDataMapper(result);
 
                 runOnUiThread(() -> {
-                    mapper.mapp();
+                    mapp(result);
 //                    city.setText(weather.getName());
 //                    image.setImageBitmap(bitmapWeather);
 //                    beschreibung.setText(weather.getDescription());
@@ -69,6 +72,16 @@ public class MainActivity extends AppCompatActivity {
                     button.performClick();
                     return true;
                 });
+    }
+
+    private void mapp(Result result) {
+        image = findViewById(R.id.image);
+        image.setImageBitmap(result.getBmp());
+        temperatur = findViewById(R.id.temperatur);
+        Double temp = new Double(result.getMain().getTemp()) - 273.15;
+        temperatur.setText(getString(R.string.temp_template, temp.intValue()));
+        beschreibung = findViewById(R.id.beschreibung);
+        beschreibung.setText(result.getWeather().get(0).getDescription());
     }
 
     private boolean istNetzwerkVerfuegbar() {

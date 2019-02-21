@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,10 +22,11 @@ class WeatherServerReq {
     private static final String KEY = "40c5de3e98b083a9edc44d6a653de166";
 
     public static Result getWeather(String city) throws JSONException, IOException {
-        String jsonData = getFromServer(city);
+        String jsonData = getFromServer(String.format(URL, city, KEY));
         UnmarshallService us = new UnmarshallService();
         try {
             Result result = us.unmarshall(jsonData);
+            result = addImage(result);
             return result;
         } catch (Exception e) {
             Log.e(TAG, e.getLocalizedMessage(), e);
@@ -51,10 +53,9 @@ class WeatherServerReq {
             }
         }
         httpURLConnection.disconnect();
-        String result = sb.toString();
-        Log.d(TAG, result);
-
-        return result;
+        String jsonResult = sb.toString();
+        Log.d(TAG, jsonResult);
+        return jsonResult;
     }
 
     private static Result addImage(Result result) throws IOException {
