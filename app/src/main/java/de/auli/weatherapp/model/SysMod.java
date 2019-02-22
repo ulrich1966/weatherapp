@@ -63,7 +63,7 @@ public class SysMod extends Model {
     }
 
     private String convert(String value) {
-        Date date = new Date(Long.valueOf(value));
+        Date date = new Date(Long.valueOf(value) * 1000);
         SimpleDateFormat localDateFormat = new SimpleDateFormat("HH:mm");
         String time = localDateFormat.format(date);
         return time;
