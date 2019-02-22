@@ -23,7 +23,7 @@ class WeatherServerReq {
 
     public static Result getWeather(String city, boolean isBmp) throws JSONException, IOException {
         Result result = crateResult(city);
-        if(isBmp){
+        if (isBmp) {
             addImage(result);
         }
         return result;
@@ -61,12 +61,9 @@ class WeatherServerReq {
             while ((line = bufferedReader.readLine()) != null) {
                 sb.append(line);
             }
-            try {
-                bufferedReader.close();
-            } catch (IOException e) {
-                Log.e(TAG, "getFromServer()", e);
-            }
+            bufferedReader.close();
         }
+
         WeatherServerReq.connection.disconnect();
         String jsonResult = sb.toString();
         return jsonResult;
@@ -81,7 +78,7 @@ class WeatherServerReq {
         WeatherServerReq.connection = (HttpURLConnection) reqUrl.openConnection();
         if (WeatherServerReq.connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
             Bitmap bmp = BitmapFactory.decodeStream(WeatherServerReq.connection.getInputStream());
-            if(bmp != null){
+            if (bmp != null) {
                 result.setBmp(bmp);
             }
             success = true;

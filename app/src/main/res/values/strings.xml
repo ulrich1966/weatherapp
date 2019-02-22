@@ -8,4 +8,5 @@
     <string name="txt_dummy">hier Text</string>
     <!-- Konstanten -->
     <string name="weather_key" formatted="false" translatable="false">40c5de3e98b083a9edc44d6a653de166</string>
+    <string name="def_city">Bremen</string>
 </resources>

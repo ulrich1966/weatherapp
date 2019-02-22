@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,10 +47,8 @@ public class MainActivity extends AppCompatActivity {
         //Layout bauen
         setContentView(R.layout.activity_main);
         city = findViewById(R.id.city);
-//        image = findViewById(R.id.image);
-//        temperatur = findViewById(R.id.temperatur);
-//        beschreibung = findViewById(R.id.beschreibung);
-
+        city.setText(R.string.def_city);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         // Action fuer den Button / Thread erstellen / runOnUiThread() ueberschreiben und Thread und
         // starten
         final Button button = findViewById(R.id.button);
@@ -63,11 +62,6 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(() -> {
                     mapp(result);
                     DataShare.getInstance().setResult(result);
-//                    city.setText(weather.getName());
-//                    image.setImageBitmap(bitmapWeather);
-//                    beschreibung.setText(weather.getDescription());
-//                    Double temp = weather.getTemp() - 273.15;
-//                    temperatur.setText(getString(R.string.temp_template, temp.intValue()));
                 });
 
             } catch (Exception e) {
@@ -102,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<Data> addDatas(Result result) {
         ArrayList<Data> datas = new ArrayList<Data>();
+        datas.add(new Data("Ort:", String.format("%s in %s", result.getName(), result.getSys().getCountry())));
         datas.add(new Data("Längengrad:", result.getCoord().getLon()));
         datas.add(new Data("Breitengrad:", result.getCoord().getLat()));
         datas.add(new Data("Luftdruck:", String.format("%s hP", result.getMain().getPressure())));
@@ -111,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         datas.add(new Data("Sicht:", String.format("%s m", result.getMain().getHumidity())));
         datas.add(new Data("Windgeschwindigkeit:", String.format("%s m/s", result.getWind().getSpeed())));
         datas.add(new Data("Windrichtung:", getString(R.string.deg_template, result.getWind().getDeg())));
-        datas.add(new Data("Sonnenaufgeng:", String.format("%s Uhr", result.getSys().getSunrise())));
+        datas.add(new Data("Sonnenaufgang:", String.format("%s Uhr", result.getSys().getSunrise())));
         datas.add(new Data("Sonnenuntergang:", String.format("%s Uhr", result.getSys().getSunset())));
 
         return datas;

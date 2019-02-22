@@ -62,10 +62,10 @@ public class SysMod extends Model {
         this.sunset = sunset;
     }
 
-    private String convert(String sunrise) {
-        Date date = new Date(Integer.valueOf(sunrise));
+    private String convert(String value) {
+        Date date = new Date(Long.valueOf(value));
         SimpleDateFormat localDateFormat = new SimpleDateFormat("HH:mm");
-        String time = localDateFormat.format(new Date());
+        String time = localDateFormat.format(date);
         return time;
     }
 
